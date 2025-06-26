@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title> RPS Calibration Plan — CV,JAC,KL </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Load up MathJax for math notation -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            TeX: { equationNumbers: { autoNumber: "AMS" } }
+        });
+    </script>
+	<script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+              tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+    </script>
+    <script type="text/javascript"
+        src="../mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+</head>
+
+<body>
+<!-- Add my custom pager script -->
+<script type="text/javascript" src="scripts/pager.js"></script>
+<link rel="stylesheet" type="text/css" href="scripts/pager.css">
+
+<header>
+    <h1>Proposed RPS Calibration Plan for Austral summer 2021/2022</h1>
+
+    <time datetime="2021 08 24" class="published updated">
+        2021 08 24
+    </time> —
+    Clara Vergès, James Cornelison & Karsten Look
+</header>
+
+<hr>
+
+<p> RPS (Rotating Polarised Source) observations are used to characterise individual detector properties,
+  namely efficiency and polarisation angle. The knowledge of the exact polarisation angle of
+  each detector is not necessary for standard B-modes analysis. However, we need to know it with a very 
+  high precision if we want to be able to constraint isotropic cosmic birefringence, since the global
+  polarisation angle of the instrument is degenerate with the cosmic birefrigence angle. While some 
+  methods have been proposed where the measurement of the instrument polarisation angle is not needed, 
+  we believe that the precise characterisation of individual detector polarisation angles
+  to obtain the global instrument polarisation angle is the best way towards measuring or improving upper limits 
+  on the cosmic birefringence angle. <br> <br>
+
+  To do so, we have analysed RPS data taken in 2017 and 2018 to derive individual detector polarisation angles.
+  We have developed techniques to constrain these angles with the best possible precision given the data we
+  currently have, but the precision of these results could be significantly improved by taking new data.
+  <br><br>
+  
+  In this posting, we first summarise our previous work, and then propose an RPS calibration plan for the coming austral 
+  summer, building on the experience we have gained - both in terms of field calibration and data analysis - to optimise 
+  the measurement campaign and make sure we have the best possible measurements. 
+</p>
+
+<hr>
+
+<h3>Table of Contents</h3>
+<ol type="I">
+  <li><a href="#motivation">Motivation</a></li>
+    <ol type="i">
+
+      <li><a href="#previous">Previous data and work</a></li>
+      <li><a href="#syst">Systematic errors</a></li>
+      <li><a href="#source">Source orientation measurement </a></li>
+
+        <li><a href="#SOA">State of the Art</a></li>
+        <li><a href="#previous">Review of 2017/2018 Results</a></li>
+        <li><a href="#syst">Systematic Errors</a></li>
+        <li><a href="#issue">Issue with the source orientation measurement</a></li>
+
+    </ol>
+  <li><a href="#plan">Calibration Plan</a></li>
+    <ol type ="i">
+      <li><a href="#checks">RPS improvements and cross-checks</a></li>
+      <li><a href="#schedule">Calibration schedule</a></li>
+    </ol>
+</ol>
+
+<section><h2 id=motivation>Motivation</h2>
+  <h3 id=SOA>State of the Art</h3>
+
+    <figure>
+    <table class="results">
+        <tr>
+            <th>Experiment</th>
+            <th>Frequency (GHz)</th>
+            <th>$\ell$ range</th>
+            <th>$\alpha\pm(\text{stat})\pm(\text{sys})$</th>
+            <th>Calibration Method</th>
+        </tr>
+        <tr>
+            <td rowspan="2">QUaD</td>
+            <td>100</td>
+            <td rowspan="2">200-2000</td>
+            <td>$-1.89\pm2.24\pm0.5$</td>
+            <td rowspan="2">Polarized Source</td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td>$+0.83\pm0.94(\pm0.5)$</td>
+        </tr>
+        <tr>
+            <td>BOOM03</td>
+            <td>143</td>
+            <td>150-1000</td>
+            <td>$-4.3\pm4.1$</td>
+            <td>pre-flight polarized source</td>
+        </tr>
+        <tr>
+            <td>ACTPol</td>
+            <td>146</td>
+            <td>500-2000</td>
+            <td>$-0.2\pm0.5(-1.2)$</td>
+            <td>"As-Designed"</td>
+        </tr>
+        <tr>
+            <td>WMAP7</td>
+            <td>41+61+95</td>
+            <td>2-800</td>
+            <td>$-1.1\pm1.4(\pm1.5)$</td>
+            <td>pre-launch polarized source / Tau A</td>
+        </tr>
+        <tr>
+            <td>BICEP2</td>
+            <td>150</td>
+            <td>30-300</td>
+            <td>$-1\pm0.2(\pm1.5)$</td>
+            <td>Dielectric Sheet</td>
+        </tr>
+        <tr>
+            <td rowspan="3">BICEP1</td>
+            <td rowspan="3">100+150</td>
+            <td rowspan="3">30-300</td>
+            <td>$-2.77\pm0.86(\pm1.3)$</td>
+            <td>Dielectric Sheet</td>
+        </tr>
+        <tr>
+            <td>$-1.71\pm0.86(\pm1.3)$</td>
+            <td>Polarized Source</td>
+        </tr>
+        <tr>
+            <td>$-1.08\pm0.86(\pm1.3)$</td>
+            <td>"As-Designed"</td>
+        </tr>
+        <tr>
+            <td>POLARBEAR</td>
+            <td>150</td>
+            <td>500-2100</td>
+            <td>$-1.08\pm0.2(\pm0.5)$</td>
+            <td>Tau A</td>
+        </tr>
+        <tr>
+            <td>Planck</td>
+            <td>30-353</td>
+            <td>100-1500</td>
+            <td>$0.35\pm0.05(\pm0.28)$</td>
+            <td>pre-flight source / Tau A</td>
+        </tr>
+        <tr>
+            <td>ACTPol</td>
+            <td>150</td>
+            <td>600-1800</td>
+            <td>$-0.07\pm0.09$</td>
+            <td>metrology+modeling+planet obs.</td>
+        </tr>
+        <tr>
+            <td>Minami & Komatsu</td>
+            <td>30-353</td>
+            <td>100-1500</td>
+            <td>$0.35\pm0.14$</td>
+            <td>Planck Data</td>
+        </tr>
+    </table>
+    </figure>
+    <p>
+    A majority of this table comes from James's SPIE paper, but now includes the Minami & Komatsu result. Note that
+</p>
+
+  <h3 id=previous>Previous data and work</h3>
+  <p>
+    RPS measurements for BICEP3 were taken in January 2017 and 2018, with the mirror installed. To derive individual 
+    detector polarisation angles, it is crucial to first build a reliable pointing model that includes the mirror,
+    and to know the source and mirror position with respect to the telescope with a very good precision. While working
+    on RPS data analysis, we made some changes in the Beam Map Pointing Model (BMPM) we use to analyse RPS data, as 
+    presented in <a href=http://bicep.rc.fas.harvard.edu/bkcmb/analysis_logbook/analysis/20210518_bmpm/> this posting</a>. <br><br>
+
+    To determine the position of the mirror and the source, the best way to proceed is to first observe the Moon with
+    the mirror on, allowing to determine first the mirror position, and then the source. However, no Moon observations
+    with the mirror on were taken in 2017. It is still possible to determine the source and mirror position by using data taken 
+    in 2017, but the derived positions suffer from higher uncertainties. In his <a href=https://arxiv.org/pdf/2012.05934.pdf>SPIE paper</a>, 
+    James presented the results he obtained using RPS data taken in January 2018 - polarisation angles and efficiency for
+    800 detector pairs. <br><br>
+
+    We have since then re-analysed RPS data with a different method to estimate source and mirror positions.
+    In this updated method, we estimate beam parameters in raw mount coordinates (before applying any pointing model), and then
+    estimate source and mirror positions. To do so, we minimise the difference between beam coordinates derived from RPS observation 
+    using the (updated) BMPM, and "canonical" beam parameters from CMB observations. This analysis is summarised in the simplified flow 
+    chart in the figure below.
+
+    <figure>
+      <img src="figs/rps_data_flow_chart.png"/>
+      <figcaption>
+          Simplified analysis flow chart to get source and mirror parameters from RPS data.
+      </figcaption>
+  </figure>
+    
+    
+    This work is described in various postings:
+
+    <ul>
+      <li> <a href=http://bicep.rc.fas.harvard.edu/jcornelison/postings/2021mmdd_rps_moon_reanalysis/>
+        Mirror parameters in 2017 and 2018</a></li>
+      <li><a href= http://bicep.rc.fas.harvard.edu/cverges/20210105_pa_reconstruction/>
+        Mirror and source parameters in 2018 - I: Methods and preliminary results</a></li>
+      <li> <a href=http://bicep.rc.fas.harvard.edu/cverges/20210604_pa_reconstruction_2/>
+        Mirror and source parameters in 2018 - II: Results with updated pointing model & Residuals</a></li>
+    </ul>
+
+  Once source and mirror positions are established, we can proceed with the rest of the analysis, using the RPS modulation curve to determine
+  individual detectors polarisation angles.
+  </p>
+
+
+  <h3 id=syst>Systematic errors</h3>
+
+  <p>
+    While analysing RPS data, we were confronted to various sources of systematic effects. As we updated the pointing model
+    and used a different approach to estimate source and mirror parameters, we have been able to reduce some of these systematic
+    uncertainties. We have summarised the known systematic uncertainties and their impact on the final measurement (detector 
+    polarisation angles) in <a href=https://docs.google.com/document/d/1DOEh3FIKXNf_MWC2YDoNQKWCEjYWp-B79q_PvZ6CGsU/edit?usp=sharing>
+    this document</a>. In most cases, the remaining uncertainties are very small and yield to a limited bias on the polarisation 
+    angle. However, a few sources of uncertainties require further attention, as they have a greater impact and/or their control
+    could be improved if we take new data.
+  </p>
+
+  <h4>Demodulation</h4>
+  <p>When fitting for beam parameters in raw mount coordinates, we noticed residuals at the level of 5-10%, as shown for example
+    in Figure 2.1 in <a href= http://bicep.rc.fas.harvard.edu/cverges/20210105_pa_reconstruction>this posting</a>. We tentatively
+    identified it as amplitide dependent noise coming from the demodulation routine, something that also been identified in beam
+    measurement campaigns.<br><br>
+
+
+    <i>(Clara) are we sure about that? is there anything we can/should/plan to do about that? if not, should we even mention it here?</i>
+  </p>
+
+    <h4 id="tiltmeter">Tilt Meter High-F Coupling</h4>
+
+    <p>The readout of the tilt meter is affected by electrical coupling with the 2-phase/50 pole stepper motor in the rotation stage. Whenever the rotation stage is moved, the tilt readout drops to some consistently lower, noiser value. When the stage completes its motion the tilt reading increases, but there is a chance that the tilt will not return to the previous level before the stage was moved and instead settle at some other value. This looks like a discontinuous step in the tilt readout. Thus, the relative tilt from raster-to-raster is unreliable. Further, because the stage was rotated between when the tilt calibration was completed and when the mast was zeroed, we cannot guarantee the the absolute tilt of the RPS either.</p>
+
+    <figure>
+        <img src="figs/tilt_timestream_annotated.png" width="100%">
+        <figcaption>
+
+        </figcaption>
+    </figure>
+
+
+    <p>
+        Note that when the stage not commanded for extended periods of time (during fridge cycles for instance), no stepping is seen and a diurnal fluctuation in tilt (likely from the sun) can be measured.
+    </p>
+
+
+
+
+    <h5>Pol Angle Relative Calibration</h5>
+
+    <p>The coupling amplitude of the stage while in motion is consistent between movements, so by isolating those moments, we can reacquire a measure of the relative angle fluctuation.</p>
+
+    <figure>
+        <img src="figs/tilt_compare_moving_vs_extended_rest.png" width="100%">
+        <figcaption>
+            Plots of the tilt meter during motor movements in RPS schedules (Top) and during FFBM/fridge cycles (Bottom) as a function of time in UTC. That the tilts are reliably on the same level (weather permitting) confirms that the tilt readout during motor movements allows us to reestablish at least a relative angle calibration.
+        </figcaption>
+    </figure>
+
+    <p>At the most pessimistic, we can take the min and max deviation from the moving-stage DC offset and call that the upper limit on the systematic uncertainty of the relative calibration. This comes out to $\pm0.09^o$.</p>
+
+    <p>Ideally, this also allows us to directly subtract the relative angle deviations to further long-timescale scattering during the analysis downstream.</p>
+
+    <h5>Pol Angle Abs Cal</h5>
+    Unfortunately, the amplitude of the DC-offset-while-moving is dependent entirely on the circuitry as it was set up during the RPS campaign, so we can only establish rough upper limits. The maximum recorded offset was $~0.25^o$ and evidence suggests that the DC offset can swing equally in either direction. In the most pessimistic scenario, I calibrated the tilt meter at one extreme and then leveled the mast at the other which gives us an upper limit of $0.5^o$, which easily dominates any other source of systematics.
+
+    <!--
+    Facts:
+    <ul>
+        <li>I calibrated the tilt at some DC offset
+        <li>I levelled at (likely) some other DC offset. What if that was at the opposite end?
+        <li>The offset can either positive or negative WRT moving-source DC offset
+        <li>The max offset seen is ~0.25deg WRT moving-source offset
+    </ul>
+    Assumptions:
+    <ul>
+        <li>DC offset can go equally pos. or neg. WRT moving-source DC offset
+        <li>The DC offset when I levelled compared to when I calibrated was the exact opposite of what I calibrated at.</ul>
+
+    Result:
+    The systematic error on the abs cal of the tilt meter is $0.25+0.25\,=\,0.5^o$
+   -->
+
+    <h5>Aside: Upper limit on mast swaying</h5>
+    <p>If we assume that the diurnal fluctuations in tilt is from heating of the mast's guy wires, then the source position would also be moving as the mast sways throughout the day. Using the same upper limit from the relative calibration ($\pm0.09^o$) we can calculate the apparent change in Azimuth of the source position:</p>
+
+    $$\sigma_{Az} = \tan^{-1}\left(\frac{H_{mast}\tan\left(\sigma_{tilt}\right)}{D_{src}}\right)$$
+
+    <p>Where $H_{mast}$ is the height of the mast from its pivot point (i.e. just the roof of MAPO) and $D_src$ is the distance from BICEP3 to the source, which are both known to be $H_{mast}=12\text{m}$ and $D_{src}=195.5\text{m}$. This gives us $\sigma_{Az} = \pm0.005^o$ which is currently subdominant to other systematics.</p>
+
+
+
+
+
+    <h3 id=issues>Issue with the source orientation measurement</h3>
+
+
+  <h4>Residuals in reconstructed RPS beam centers</h4>
+  <p> As said previously, our method to estimate the source and mirror positions relies on matching beam centers derived from RPS
+    measurements using the BMPM, with the CMB derived beam centers (see Figure 1.1). Ideally, the two sets of beam centers should be 
+    identical after estimating the optimal source and mirror parameters. However, we observe a pattern of residuals that we try to 
+    characterise and understand, as detailed in <a href=http://bicep.rc.fas.harvard.edu/cverges/20210604_pa_reconstruction_2/>
+    this posting</a>. <br><br>
+
+    RPS data and CMB data are taken at different dk angles (0/45/90/135 vs 23/68/203/248), and CMB data is taken without 
+    the mirror on (i.e. the pointing model is different), and at a different time of the year. While this shouldn't have any impact,
+    we might suffer from various systematic effects, due to e.g the mirror, or gravitational flexture at different dk angles (as hinted 
+    by Justin in his <a href=http://bicep.rc.fas.harvard.edu/bkcmb/analysis_logbook/analysis/20181207_B2018_beamcen/>CMB beam centers 
+    posting</a>.
+
+    In particular, we observe dk dependent residuals and show that:
+
+    <ul>
+      <li>RPS data at different dk angles yield to different mirror roll angle (up to ~0.03 deg difference)</li>
+      <li>For a given RPS data set at one dk angle, using CMB derived beam centers at different dk angles 
+        as reference also yields to different mirror roll angle (up to ~0.04 deg difference)</li>
+    </ul>
+
+    Although these differences look small, they still represent 30%-40% differences given the expected mirror roll parameter (which
+    is about 0.10 deg). However, based on systematic errors propagation. we don't expect these errors on the mirror roll to have a 
+    very significant impact on the final results. Nevertheless, we propose to modify the RPS calibration schedule to try and avoid this 
+    source of residuals (see <a href=#schedule>calibration schedule </a> below.)
+
+  </p>
+
+  <h4>Measurement repeatability</h4>
+
+  <p> In 2018, two RPS data sets were taken at dk 45 - a complete and a partial one. Using only detectors that have measurements
+    in the two data sets, we have shown that while measurement repeatablity is overall good. As detailled in 
+    <a href=http://bicep.rc.fas.harvard.edu/cverges/20210604_pa_reconstruction_2 >this posting</a>, the estimation of the mirror roll 
+    parameter changes by ~9% between the two dk 45 data sets. We believe that this variability is likely due to external factors affecting 
+    the source and/or mirror position (mast swaying, sun, etc.). Again, we estimate that these effects would have a limited impact 
+    on the final measurement, but we still need to have an estimation of measurement repeatability so that we can correctly propagate
+    the associated errors. The calibration schedule that we propose below takes into account these constraints.
+  </p>
+
+ <h3 id=source>Source orientation measurement</h3>
+  <p> The main remaining source of systematic errors that we have identified is the calibration of the tiltmeter. The RPS tiltmeter 
+    allows us to know the orientation of the polarised source, and is thus crucial to properly reconstruct detector angles from the 
+    RPS modulation curve. However, during the 2018 observing season, the monitoring of the source tilt season is contaminated by 
+    electrical coupling in the tiltmeter readout. We investigated this issue in details, as summarised 
+    <a href=http://bicep.rc.fas.harvard.edu/jcornelison/postings/rps_scratch/>here</a>. We also found that the PID control for the 
+    source temperature suffered from readout coupling issues. <br><br>
+
+    To avoid such problems this season, we propose a number of software and hardware fixes in the calibration procedure, as detailed 
+    in the <a href="#checks">next section</a>.
+  </p> 
+
+</section>
+
+<section><h2 id=plan>Calibration Plan</h2>
+
+<h3 id=checks>RPS improvements and cross-checks</h3>
+
+<h3 id=schedule>Calibration schedule</h3>
+
+</section>
+
+<hr>
+
+</body>
